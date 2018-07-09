@@ -1,9 +1,10 @@
 from flask import Flask, render_template, jsonify, redirect
 from flask_pymongo import PyMongo
 import scrape_mars
+import os
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://<dbuser>:<dbpassword>@ds123770.mlab.com:23770/heroku_0c0nt9gr"
+app.config["MONGO_URI"] = os.environ['MONGODB_URI']
 mongo = PyMongo(app)
 
 @app.route("/")
