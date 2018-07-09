@@ -7,11 +7,8 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 
 def init_browser():
-    chrome_options = webdriver.chrome.options.Options()
-    chrome_options.binary_location = os.environ['GOOGLE_CHROME_BIN']
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--no-sandbox')
-    return webdriver.Chrome(executable_path=os.environ['CHROMEDRIVER_PATH'], chrome_options=chrome_options)
+    executable_path = {'executable_path': os.environ['CHROMEDRIVER_PATH']}
+    return Browser("chrome", **executable_path)
 
 def scrape():
     url01 = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
