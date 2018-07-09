@@ -7,7 +7,7 @@ from selenium import webdriver
 from bs4 import BeautifulSoup
 
 def init_browser():
-    executable_path = {'executable_path': os.environ['CHROMEDRIVER_PATH']}
+    executable_path = {'executable_path': os.environ['GOOGLE_CHROME_BIN']}
     return Browser("chrome", **executable_path)
 
 def scrape():
