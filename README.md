@@ -1,8 +1,6 @@
 
 # [Mission to Mars](https://missiontomarz.herokuapp.com/)
 
-Selenium and Splinter are not playing nicely with Heroku, so this does not work yet.
-
 ## Step 1 - Scraping
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
