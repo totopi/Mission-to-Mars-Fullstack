@@ -56,29 +56,29 @@ def scrape():
     df.set_index("description")
     html_df = df.to_html(index=None)
 
-    url05="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
+    # url05="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 
-    browser.visit(url05)
-    time.sleep(2)
-    print('loading hemispheres page')
-    soup = BeautifulSoup(browser.html, "html.parser")
+    # browser.visit(url05)
+    # time.sleep(2)
+    # print('loading hemispheres page')
+    # soup = BeautifulSoup(browser.html, "html.parser")
 
-    url_base = "https://astrogeology.usgs.gov"
-    hemisphere_urls = []
-    for div in soup.find("div", class_="full-content").find_all("div", class_="item"):
-        hemisphere_urls.append(url_base + div.a["href"])
+    # url_base = "https://astrogeology.usgs.gov"
+    # hemisphere_urls = []
+    # for div in soup.find("div", class_="full-content").find_all("div", class_="item"):
+    #     hemisphere_urls.append(url_base + div.a["href"])
 
-    hemisphere_list = []
-    for urls in hemisphere_urls:
-        browser.visit(urls)
-        time.sleep(2)
-        print(f'loading {url}')
-        soup = BeautifulSoup(browser.html, "html.parser")
-        hemisphere_image_url = soup.find("div", class_="downloads").find_all("li")[0].a["href"]
-        hemisphere_name = soup.find("h2", class_="title").text
-        hemisphere_dict = {"img_url": hemisphere_image_url,
-                        "title": hemisphere_name}
-        hemisphere_list.append(hemisphere_dict)
+    # hemisphere_list = []
+    # for urls in hemisphere_urls:
+    #     browser.visit(urls)
+    #     time.sleep(2)
+    #     print(f'loading {url}')
+    #     soup = BeautifulSoup(browser.html, "html.parser")
+    #     hemisphere_image_url = soup.find("div", class_="downloads").find_all("li")[0].a["href"]
+    #     hemisphere_name = soup.find("h2", class_="title").text
+    #     hemisphere_dict = {"img_url": hemisphere_image_url,
+    #                     "title": hemisphere_name}
+    #     hemisphere_list.append(hemisphere_dict)
     
     return_dictionary = {
         "news_title": news_title,
@@ -89,7 +89,7 @@ def scrape():
         "mars_weather": mars_weather,
         #"df": df,
         "html_df": html_df,
-        "hemisphere_list": hemisphere_list
+        #"hemisphere_list": hemisphere_list
     }
 
     return return_dictionary
