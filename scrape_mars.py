@@ -8,9 +8,11 @@ from bs4 import BeautifulSoup
 
 def init_browser():
     chrome_options = webdriver.ChromeOptions()
+    
+    chrome_options.binary_location = os.environ['GOOGLE_CHROME_BIN']
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
-    executable_path = {'executable_path': os.environ['GOOGLE_CHROME_BIN']}
+    executable_path = {'executable_path': os.environ['CHROMEDRIVER_PATH']}
     return Browser("chrome", **executable_path, options=chrome_options, headless=True)
 
 def scrape():
