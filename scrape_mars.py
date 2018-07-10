@@ -8,7 +8,6 @@ from bs4 import BeautifulSoup
 
 def init_browser():
     chrome_options = webdriver.ChromeOptions()
-    
     chrome_options.binary_location = os.environ['GOOGLE_CHROME_BIN']
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
@@ -22,6 +21,7 @@ def scrape():
 
     browser.visit(url01)
     time.sleep(5) # Wait for that javascript to run and populate the page
+    print('loading latest mars news page')
 
     soup = BeautifulSoup(browser.html, "html.parser")
     news_title = soup.find("div", class_="content_title").a.text.strip()
@@ -30,8 +30,10 @@ def scrape():
     url02 = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
 
     browser.visit(url02)
+    print('loading images page')
     time.sleep(2)
     browser.click_link_by_partial_text("FULL IMAGE")
+    print('loading full image')
     time.sleep(2)
     browser.click_link_by_partial_text("more info")
     soup = BeautifulSoup(browser.html, "html.parser")
@@ -42,6 +44,7 @@ def scrape():
     url03="https://twitter.com/marswxreport?lange=en"
 
     browser.visit(url03)
+    print('loading twitter page')
     soup = BeautifulSoup(browser.html, "html.parser")
     mars_weather = soup.find("p", class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
 
@@ -57,6 +60,7 @@ def scrape():
 
     browser.visit(url05)
     time.sleep(2)
+    print('loading hemispheres page')
     soup = BeautifulSoup(browser.html, "html.parser")
 
     url_base = "https://astrogeology.usgs.gov"
@@ -68,6 +72,7 @@ def scrape():
     for urls in hemisphere_urls:
         browser.visit(urls)
         time.sleep(2)
+        print(f'loading {url}')
         soup = BeautifulSoup(browser.html, "html.parser")
         hemisphere_image_url = soup.find("div", class_="downloads").find_all("li")[0].a["href"]
         hemisphere_name = soup.find("h2", class_="title").text
