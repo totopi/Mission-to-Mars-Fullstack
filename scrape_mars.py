@@ -11,7 +11,7 @@ def init_browser():
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--no-sandbox')
     executable_path = {'executable_path': os.environ['GOOGLE_CHROME_BIN']}
-    return Browser("chrome", **executable_path, options=chrome_options, headless=False)
+    return Browser("chrome", **executable_path, options=chrome_options, headless=True)
 
 def scrape():
     url01 = "https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
