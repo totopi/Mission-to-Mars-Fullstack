@@ -3,6 +3,7 @@ Flask==0.12.2
 Flask-Cors==3.0.3
 Flask-PyMongo==0.5.1
 Flask-SQLAlchemy==2.3.2
+html5lib==0.999999999
 lxml==4.1.0
 numpy==1.13.3
 numpydoc==0.7.0
